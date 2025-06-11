@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class View extends JFrame{
     private JButton saveBtn;
@@ -9,7 +10,8 @@ public class View extends JFrame{
     private JCheckBox isSickChkBox;
 
     public View(int width, int height, String windowTitle) {
-            createUserInterface( width, height);
+        setTitle(windowTitle);
+        createUserInterface( width, height);
     }
     private  void createUserInterface( int width, int height ){
 
@@ -55,4 +57,9 @@ public class View extends JFrame{
         //(von JFrame geerbt)
         setVisible(true); //Fenster sichtbar machen
     }
+
+    public void addSaveHandler( ActionListener listener){
+        saveBtn.addActionListener( listener );
+    }
+
 }
