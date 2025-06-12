@@ -9,10 +9,13 @@ public class View extends JFrame{
     private JTextField nameTf, lngTf, latTf, typeTf;
     private JCheckBox isSickChkBox;
 
+    //Konstruktor
     public View(int width, int height, String windowTitle) {
         setTitle(windowTitle);
         createUserInterface( width, height);
     }
+
+    //Methode createUserInterface
     private  void createUserInterface( int width, int height ){
 
         setSize( width, height ); //Fenstergröße setzen
@@ -58,8 +61,44 @@ public class View extends JFrame{
         setVisible(true); //Fenster sichtbar machen
     }
 
+    //Methode addSaveHandler
     public void addSaveHandler( ActionListener listener){
         saveBtn.addActionListener( listener );
     }
+
+    //Getter für Textfelder
+    public String getNameText(){
+        return nameTf.getText();
+    }
+
+    public String getLngText(){
+        return lngTf.getText();
+    }
+
+    public String getLatText(){
+        return latTf.getText();
+    }
+
+    public String getTypeText(){
+        return typeTf.getText();
+    }
+
+    public boolean getIsSickChkBox(){
+        return isSickChkBox.isSelected();
+    }
+
+    public void showErrorWindow( String message ){
+        JOptionPane.showMessageDialog( this, message, "Fehler", JOptionPane.ERROR_MESSAGE);
+    }
+
+
+    //ToDo erstellen Sie zwei weitere Methoden
+    //ToDo: showInfoWindow und showConfirmWindow
+    public void showInfoWindow( String message ){
+        JOptionPane.showMessageDialog( this, message, "Info", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+
+
 
 }
