@@ -99,7 +99,11 @@ public class View extends JFrame{
     }
 
     public boolean showConfirmWindow( String message ){
-        return JOptionPane.showConfirmDialog( this, message, "Bitte bestätigen", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION;
+
+        boolean result = JOptionPane.showConfirmDialog( this, message, "Bitte bestätigen",
+                JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION;
+
+        return result;
     }
 
 

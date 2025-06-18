@@ -9,6 +9,13 @@ public class Controller {
         view = new View(400,200, "SRH Campus Baum Manager");
         view.addSaveHandler(this::onSaveClick);
 
+        if(view.showConfirmWindow("Frage")){
+            System.out.println("wurde bestätigt");
+        }
+        else{
+            System.out.println( "wurde nicht bestätigt");
+        }
+
     }
     private void onSaveClick(ActionEvent event){
         System.out.println( event.getActionCommand() );
@@ -32,6 +39,7 @@ public class Controller {
              if(value > max || value < min){  //falls hier keine gültiges Argument
                  throw new IllegalArgumentException(); // => IllegalArgumentException
              }
+
         }
         catch( NumberFormatException e ){  //reagiert nur auf NumberFormatException
             //ToDo: Meldung an Nutzer, dass falsche Eingabe
