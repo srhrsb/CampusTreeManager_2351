@@ -98,7 +98,9 @@ public class View extends JFrame{
         JOptionPane.showMessageDialog( this, message, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
 
-
+    public boolean showConfirmWindow( String message ){
+        return JOptionPane.showConfirmDialog( this, message, "Bitte bestätigen", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION;
+    }
 
 
 }

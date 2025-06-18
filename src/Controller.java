@@ -29,8 +29,8 @@ public class Controller {
         try{
             value = Double.parseDouble(text); //wenn das hier fehl schlägt, weil keine Kommazahl
                                               //eingetragen ist, dann geht es in den Catch-Block
-             if(value > max || value < min){
-                 throw new IllegalArgumentException();
+             if(value > max || value < min){  //falls hier keine gültiges Argument
+                 throw new IllegalArgumentException(); // => IllegalArgumentException
              }
         }
         catch( NumberFormatException e ){  //reagiert nur auf NumberFormatException
@@ -47,7 +47,6 @@ public class Controller {
         catch( Exception e){ //regiert auf alle Exceptions
             throw new RuntimeException(e);
         }
-
         return value;
     }
 }
