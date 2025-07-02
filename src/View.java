@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class View extends JFrame{
-    private JButton saveBtn;
+    private JButton saveBtn, showListBtn;
 
     private JTextField nameTf, lngTf, latTf, typeTf;
     private JCheckBox isSickChkBox;
@@ -24,7 +24,10 @@ public class View extends JFrame{
 
         JPanel bottomPanel = new JPanel(); //ein Panel gruppiert Elemente
         saveBtn = new JButton("Speichern"); //Button erstellen
+        showListBtn = new JButton("Baumliste anzeigen");//neuer Show Button
+
         bottomPanel.add( saveBtn ); // panel hat eine Methode add
+        bottomPanel.add(showListBtn); //Show Button dem Panel hinzufügen
         add( bottomPanel );//Die Methode add für das Fenster
 
         JPanel topPanel = new JPanel();
@@ -63,7 +66,16 @@ public class View extends JFrame{
 
     //Methode addSaveHandler
     public void addSaveHandler( ActionListener listener){
+
         saveBtn.addActionListener( listener );
+    }
+
+    //Methode addSaveHandler
+    //hier wird der Listener vom Controller angenommen
+    //damit wird dem Button gesagt, welche Methode im Controller
+    //er aufrufen soll, wenn er geklickt wird
+    public void addShowHandler( ActionListener listener){
+        showListBtn.addActionListener( listener );
     }
 
     //Getter für Textfelder

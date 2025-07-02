@@ -8,13 +8,14 @@ public class Controller {
         treedao = new TreeDAO();
         view = new View(400,200, "SRH Campus Baum Manager");
         view.addSaveHandler(this::onSaveClick);
+        view.addShowHandler(this::onShowTreeList);
 
-        if(view.showConfirmWindow("Frage")){
-            System.out.println("wurde bestätigt");
-        }
-        else{
-            System.out.println( "wurde nicht bestätigt");
-        }
+//        if(view.showConfirmWindow("Frage")){
+//            System.out.println("wurde bestätigt");
+//        }
+//        else{
+//            System.out.println( "wurde nicht bestätigt");
+//        }
 
     }
     private void onSaveClick(ActionEvent event){
@@ -27,6 +28,13 @@ public class Controller {
 
         String type = view.getTypeText();
         boolean isSick = view.getIsSickChkBox();
+
+        treedao.addTree(1, name, lng, lat, type, isSick);
+    }
+
+    private void onShowTreeList(ActionEvent event){
+        System.out.println( "Liste anzeigen" );
+
     }
 
     private double getDoubleValueFromText( String text, double min, double max ){
