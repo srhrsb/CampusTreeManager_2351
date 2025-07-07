@@ -23,4 +23,38 @@ public class TreeDAO {
         return false;
     }
 
+    public String getTreeListAsText(){
+        String listString = "";
+        String br = "\n";
+
+        for( Tree tree : treeList){ //durch Treeliste laufen
+            listString += "ID: " + tree.getId() + br;
+            listString += "Name: " + tree.getName() + br;
+
+            //ToDO: Für alle weiteren Getter analog
+            listString += "Längengrad: " + tree.getLng() + br;
+            listString += "Breitengrad: " + tree.getLat() + br;
+            listString += "Typ: " + tree.getType() + br;
+
+            String sick = "nein";
+            if( tree.isSick() ){
+                sick = "ja";
+            }
+
+            listString += "Ist krank: " + sick + br;
+            listString += br + "-------------------------" + br;
+        }
+        return listString;
+    }
+
+    public void saveData(){
+
+    }
+
+    public ArrayList<Tree> loadData(){
+
+
+
+        return null;
+    }
 }

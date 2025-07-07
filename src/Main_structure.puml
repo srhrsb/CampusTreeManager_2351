@@ -1,0 +1,240 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Main",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1664073796 { 
+   	label=Controller
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Controller1664073796[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Controller</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   treedao: TreeDAO [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   view: View [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Controller()</TD></TR>
+<TR><TD ALIGN="LEFT" >- getDoubleValueFromText(text: String, min: double, max: double): double</TD></TR>
+<TR><TD ALIGN="LEFT" >- getUniqueId(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >- onSaveClick(event: ActionEvent)</TD></TR>
+<TR><TD ALIGN="LEFT" >- onShowTreeList(event: ActionEvent)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2390489 { 
+   	label=Main
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Main2390489[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Main</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2615230 { 
+   	label=Tree
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Tree2615230[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Tree</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   isSick: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lat: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lng: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   type: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Tree(id: int, name: String, lng: double, lat: double, type: String, isSick: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getId(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLat(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLng(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getType(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isSick(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setId(id: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLat(lat: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setLng(lng: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setName(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setSick(sick: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setType(type: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_2666181 { 
+   	label=View
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   View2666181[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)View</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   isSickChkBox: JCheckBox [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latTf: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lngTf: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nameTf: JTextField [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   saveBtn: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showListBtn: JButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   typeTf: JTextField [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ View(width: int, height: int, windowTitle: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addSaveHandler(listener: ActionListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addShowHandler(listener: ActionListener)</TD></TR>
+<TR><TD ALIGN="LEFT" >- createUserInterface(width: int, height: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getIsSickChkBox(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLatText(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLngText(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getNameText(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTypeText(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showConfirmWindow(message: String): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showErrorWindow(message: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showInfoWindow(message: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_600973044 { 
+   	label=TreeDAO
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   TreeDAO600973044[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TreeDAO</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   treeList: ArrayList&lt;Tree&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ TreeDAO()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addTree(id: int, name: String, lng: double, lat: double, type: String, isSick: boolean): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getTreeListAsText(): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Controller1664073796 -> TreeDAO600973044[label="treedao
+[0..1]"];
+Controller1664073796 -> View2666181[label="view
+[0..1]"];
+Main2390489 -> Controller1664073796[label="main() -> Controller()"];
+TreeDAO600973044 -> Tree2615230[label="treeList
+[0..*]"];
+    
+}
+@enduml

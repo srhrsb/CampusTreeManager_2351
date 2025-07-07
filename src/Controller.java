@@ -1,4 +1,6 @@
 import java.awt.event.ActionEvent;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Controller {
     private TreeDAO treedao;
@@ -29,12 +31,27 @@ public class Controller {
         String type = view.getTypeText();
         boolean isSick = view.getIsSickChkBox();
 
-        treedao.addTree(1, name, lng, lat, type, isSick);
+        int id = getUniqueId();
+        System.out.println(id);
+        treedao.addTree( id , name, lng, lat, type, isSick);
     }
 
     private void onShowTreeList(ActionEvent event){
         System.out.println( "Liste anzeigen" );
 
+        //ToDo: Zeigen sie die Baumliste in einem Info Fenster an
+        String list = treedao.getTreeListAsText();
+        view.showInfoWindow(list);
+    }
+
+    private int getUniqueId( ){
+        Random random = new Random();
+        int number = random.nextInt(90000) +10000; // 5-stellige Zufallszahl
+
+        long unixTime = TimeUnit.MILLISECONDS.
+                toSeconds(System.currentTimeMillis());
+
+       return (int)(unixTime/1000) + number;
     }
 
     private double getDoubleValueFromText( String text, double min, double max ){
