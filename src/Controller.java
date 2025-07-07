@@ -34,6 +34,7 @@ public class Controller {
         int id = getUniqueId();
         System.out.println(id);
         treedao.addTree( id , name, lng, lat, type, isSick);
+        treedao.saveData();
     }
 
     private void onShowTreeList(ActionEvent event){
